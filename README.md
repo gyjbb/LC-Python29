@@ -46,8 +46,21 @@ class Solution:
 
 
 ## 406.Queue Reconstruction by Height
-Deal with one side first and then deal with another side!
+Deal with one side first and then deal with another side! Firstly sort h/height from large to small, then adjust orders according to k.
+```python
+class Solution:
+    def reconstructQueue(self, people: List[List[int]]) -> List[List[int]]: 
+        #firstly sort heights from largest to smallest, if same, sort according to k from least to largest
+        people.sort(key = lambda x: (-x[0],  x[1]))
+        que = []
 
+        #adjust the order again according to k from least to largest
+        #by inserting element p to place p[1]
+        for p in people:
+            que.insert(p[1], p) 
+        
+        return que
+```
 
 
 ## 452. 
