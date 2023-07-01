@@ -2,7 +2,7 @@
 Greedy Algorithm 4
 
 
-## 860.Lemonade Change
+## 860.Lemonade Change, 406.Queue Reconstruction by Height
 
 June 30, 2023  4h
 
@@ -13,10 +13,41 @@ The challenges today are especially about ~~sorting both  positive and negative 
 
 ## 860.Lemonade Change
 This is an easy question.
+```python
+class Solution:
+    def lemonadeChange(self, bills: List[int]) -> bool:
+        five = 0
+        ten = 0
+        twenty = 0
+        
+        for bill in bills:
+            if bill == 5:
+                five += 1
+            
+            if bill == 10:
+                if five <= 0:
+                    return False
+                ten += 1
+                five -= 1
+            
+            if bill == 20:
+                if five > 0 and ten > 0:
+                    five -= 1
+                    ten -= 1
+                    #twenty += 1
+                elif five >= 3:
+                    five -= 3
+                    #twenty += 1
+                else:
+                    return False
+        
+        return True
+```
 
 
-## 406.
-根据身高重建队列 , 处理好一边再处理另一边。
+## 406.Queue Reconstruction by Height
+Deal with one side first and then deal with another side!
+
 
 
 ## 452. 
