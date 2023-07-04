@@ -2,13 +2,13 @@
 Greedy Algorithm 4
 
 
-## 860.Lemonade Change, 406.Queue Reconstruction by Height
+## 860.Lemonade Change, 406.Queue Reconstruction by Height, 452.Minimum Number of Arrows to Burst Balloons
 
 June 30, 2023  4h
 
 Congratulations!\
 This is the 30th day for leetcode python study. Today we will learn about the Greedy Algorithm!\
-The challenges today are especially about ~~sorting both  positive and negative numbers, the concept of net increase, and processing one side at each time and merging the results~~.
+The challenges today are especially about inserting items according to the ranking and merge intervals of overlapping.
 
 
 ## 860.Lemonade Change
@@ -63,7 +63,20 @@ class Solution:
 ```
 
 
-## 452. 
-用最少数量的箭引爆气球, 本题是一道 重叠区间的题目，好好做一做，因为明天三道题目，都是 重叠区间。
+## 452.Minimum Number of Arrows to Burst Balloons
+Overlapping intervals. If the ith interval's left boundary is greater than the i-1th interval's right boundary, we need one more arrow. Otherwise, no new arrow is needed, and we need to see if the i+1th interval's left boundary is smaller than the minimum of i-1 and ith right boundary. This is updating the new right boundary for i-1 and ith interval.
+```python
+class Solution:
+    def findMinArrowShots(self, points: List[List[int]]) -> int:
+        if len(points) == 0: return 0
+        points.sort(key = lambda x: x[0])
+        result = 1
+        for i in range(1, len(points)):
+            if points[i][0] > points[i-1][1]:   #baloon i and i-1 have no overlapping interval
+                result += 1
+            else:
+                points[i][1] = min(points[i-1][1], points[i][1])
+        return result
+```
 
 
