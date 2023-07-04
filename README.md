@@ -7,7 +7,7 @@ Greedy Algorithm 4
 June 30, 2023  4h
 
 Congratulations!\
-This is the 30th day for leetcode python study. Today we will learn about the Greedy Algorithm!\
+This is the 29th day for leetcode python study. Today we will learn about the Greedy Algorithm!\
 The challenges today are especially about inserting items according to the ranking and merge intervals of overlapping.
 
 
